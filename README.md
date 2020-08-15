@@ -1,4 +1,5 @@
 # flap.py
+Assets: https://github.com/samuelcust/flappy-bird-assets
 Estrutura do projeto:
 ```
 ├── assets
