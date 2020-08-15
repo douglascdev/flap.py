@@ -5,6 +5,7 @@ from configs.configs import Configs
 
 if __name__ == '__main__':
     configs = Configs()
-    screen = pg.display.set_mode((configs.tela_largura, configs.tela_altura))
+    largura, altura = configs.tela_largura, configs.tela_altura
+    screen = pg.display.set_mode(largura, altura)
     pg.quit()
     sys.exit()

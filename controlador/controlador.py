@@ -38,4 +38,3 @@
 #             self.event_loop()
 #             self.atualizar(delta_time)
 #             pg.display.update()
-

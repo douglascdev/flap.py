@@ -1,5 +1,5 @@
-import pygame as pg
 import enum
+import pygame as pg
 from .jogo import Jogo
 from .menu import Menu
 
@@ -8,8 +8,8 @@ class TelaBase(object):
     def __init__(self):
         self.finalizada: bool = False
         self.sair: bool = False
-        self.proxima: TelaBase = None
-        self.anterior: TelaBase = None
+        self.proxima: TelaBase
+        self.anterior: TelaBase
 
     def evento(self, event: pg.event):
         if event.type == pg.KEYDOWN:
@@ -18,7 +18,7 @@ class TelaBase(object):
             self.finalizada = True
 
     def atualizar(self, screen, dt):
-        self.draw(screen)
+        screen.draw(self)
 
     def desenhar(self, screen):
         screen.fill((0, 0, 255))
