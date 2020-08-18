@@ -1,29 +1,31 @@
-import enum
+from typing import Dict
+
 import pygame as pg
-from .jogo import Jogo
-from .menu import Menu
+import logging
 
 
 class TelaBase(object):
-    def __init__(self):
-        self.finalizada: bool = False
-        self.sair: bool = False
-        self.proxima: TelaBase
-        self.anterior: TelaBase
+    def __init__(self, proxima = None):
+        self.fechar_jogo: bool = False
+        self.tela_finalizada: bool = False
+        self.proxima = proxima
+        self.sprites: [pg.Surface] = []
+        self.atalhos_teclado: Dict[pg.event] = {
+            pg.K_ESCAPE: self.sair,
+        }
 
-    def evento(self, event: pg.event):
-        if event.type == pg.KEYDOWN:
-            print(f'Apertou uma tecla na tela {self.__class__}')
-        elif event.type == pg.MOUSEBUTTONDOWN:
-            self.finalizada = True
+    def sair(self):
+        self.fechar_jogo = True
 
-    def atualizar(self, screen, dt):
-        screen.draw(self)
+    def eventos_teclado(self, evento: pg.event) -> None:
+        if evento.type == pg.QUIT:
+            self.sair()
+            return
 
-    def desenhar(self, screen):
-        screen.fill((0, 0, 255))
+        if evento.type not in (pg.KEYDOWN, pg.KEYUP):
+            return
 
-
-class Telas(enum.Enum):
-    menu = Menu()
-    jogo = Jogo()
+        funcao_atalho = self.atalhos_teclado.get(evento.key, None)
+        logging.info(f"Tecla apertada: {str(evento.key)}")
+        if funcao_atalho is not None:
+            funcao_atalho()

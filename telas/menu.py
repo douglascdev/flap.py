@@ -1,7 +1,12 @@
-from ..tela import Tela
+from .tela import TelaBase
+from .jogo import Jogo
+from controlador.pg_utils import carregar_sprite
 
 
-class Menu(Tela):
+class Menu(TelaBase):
     def __init__(self):
-        Tela.__init__(self)
-        self.proxima = 'game'
+        TelaBase.__init__(self, Jogo)
+        self.get_ready = carregar_sprite("outros/get-ready")
+        self.bg = carregar_sprite("bg/background-day")
+        self.sprites.append(self.get_ready)
+        self.sprites.append(self.bg)

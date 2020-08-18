@@ -2,17 +2,20 @@ from pathlib import Path
 
 
 class Configs:
-    def __init__(self):
-        self.pasta_projeto = Path(__file__).parent.parent
-        self.pasta_assets = self.pasta_projeto / "assets"
-        self.pasta_audio = self.pasta_assets / "audio"
-        self.pasta_sprites = self.pasta_assets / "sprites"
-        self.tela_largura = 600
-        self.tela_altura = 400
+    pasta_projeto = Path(__file__).parent.parent
+    pasta_assets = pasta_projeto / "assets"
+    pasta_audio = pasta_assets / "audio"
+    pasta_sprites = pasta_assets / "sprites"
+    tela_largura = 288
+    tela_altura = 512
+    fps = 60
 
 
 if __name__ == "__main__":
-    print(Configs().pasta_projeto)
-    print(Configs().pasta_assets)
-    print(Configs().pasta_audio)
-    print(Configs().pasta_sprites)
+    """
+    Verificar a saída das pastas
+    """
+    print(Configs.pasta_projeto)
+    print(Configs.pasta_assets)
+    print(Configs.pasta_audio)
+    print(Configs.pasta_sprites)
