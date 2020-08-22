@@ -12,7 +12,7 @@ def carregar_sprites(pasta_sprites: str) -> List[pg.Surface]:
     """
     pasta = Configs.PASTA_SPRITES / pasta_sprites
     logging.info(f"Carregando os sprites da pasta '{str(pasta)}'")
-    return [pg.image.load(str(sprite)).convert_alpha() for sprite in pasta.glob('*.png')]
+    return [pg.image.load(str(sprite)).convert_alpha() for sprite in sorted(pasta.glob('*.png'))]
 
 
 def carregar_sprite(sprite: str) -> pg.Surface:
@@ -34,6 +34,17 @@ def posicao_central(largura: int, altura: int) -> Tuple:
     :return: coordenadas x e y em que o objeto deve ser renderizado para ficar centralizado
     """
     posicao = (Configs.TELA_LARGURA - largura) / 2, (Configs.TELA_ALTURA - altura) / 2
+    logging.info(f"Posição central: {posicao}")
+    return posicao
+
+
+def posicao_central_horizontal(largura: int) -> int:
+    """
+    Calcula a posição em que o objeto deve ser renderizado para ficar centralizado na horizontal
+    :param largura:
+    :return: coordenadas x e y em que o objeto deve ser renderizado para ficar centralizado
+    """
+    posicao = (Configs.TELA_LARGURA - largura) / 2
     logging.info(f"Posição central: {posicao}")
     return posicao
 

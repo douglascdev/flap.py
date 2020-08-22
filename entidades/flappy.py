@@ -12,16 +12,16 @@ class Flappy(Entidade):
         pasta_cor = 'flappy/' + choice(cores_flappy)
         super(Flappy, self).__init__(pasta_cor, tela_pg)
         self.pulando = False
-        self.rect.x = 15
-        self.rect.y = Configs.TELA_ALTURA / 2
+        self.rect.x = Configs.TELA_LARGURA / 10
+        self.rect.y = Configs.TELA_ALTURA / 2 - Configs.POSICAO_INICAL
 
         self.aceleracao_vertical = Configs.ACELERACAO_GRAVIDADE
 
     def pular(self):
-        if not self.pulando:
-            logging.info("Pulando!")
-            self.pulando = True
-            self.aceleracao_vertical = Configs.ACELERACAO_PULO
+        # if not self.pulando:
+        logging.info("Pulando!")
+        self.pulando = True
+        self.aceleracao_vertical = Configs.ACELERACAO_PULO
 
     def altura(self):
         self.mover(0, self.aceleracao_vertical)
@@ -31,23 +31,7 @@ class Flappy(Entidade):
             if self.aceleracao_vertical >= Configs.ACELERACAO_GRAVIDADE:
                 self.pulando = False
                 self.aceleracao_vertical = Configs.ACELERACAO_GRAVIDADE
-        # if True:
-        # self.y += 10
-        # self.pulando = False
 
     def desenhar(self):
         self.altura()
         super(Flappy, self).desenhar()
-
-
-if __name__ == '__main__':
-    """
-    Verificar sprites carregados. A função que carrega os sprites não funciona sem inicializar o display
-    """
-
-    import pygame as pg
-
-    pg.init()
-    pg.display.init()
-    screen = pg.display.set_mode([800, 600])
-    assert len(Flappy(screen).sprites) == 3

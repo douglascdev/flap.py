@@ -8,7 +8,6 @@ class Terreno(Entidade):
         # TODO: não carregar toda a pasta outros
         # Talvez criar dicionario de sprites ao inves de lista, com o nome do arquivo de key
         super(Terreno, self).__init__('outros', tela_pg)
-        self.imagem = self.sprites[3]
         self.rect.y = pg_utils.posicao_baixo(self.imagem.get_height())
         self.contador_mov = 0
         # Quantidade de pixels do terreno que pode ser movido para a esquerda durante a animação, antes de voltar para 0
@@ -32,16 +31,3 @@ class Terreno(Entidade):
 
     def proximo_sprite(self):
         pass  # Não precisa trocar de sprite
-
-
-if __name__ == '__main__':
-    """
-    Verificar sprites carregados. A função que carrega os sprites não funciona sem inicializar o display
-    """
-
-    import pygame as pg
-
-    pg.init()
-    pg.display.init()
-    screen = pg.display.set_mode([800, 600])
-    # assert len(Flappy(screen).sprites) == 3

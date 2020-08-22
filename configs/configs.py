@@ -30,6 +30,9 @@ class Configs:
     ACELERACAO_PULO = -ACELERACAO_GRAVIDADE * 2.5
     REDUCAO_ACELERACAO_PULO = ACELERACAO_GRAVIDADE / 4
 
+    # Posicao inicial do flappy que vai ser subtraida da posição central(quanto maior mais alto)
+    POSICAO_INICAL = 200
+
 
 if __name__ == "__main__":
     """

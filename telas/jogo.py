@@ -4,6 +4,7 @@ from random import randint
 from configs.configs import Configs
 from controlador.pg_utils import carregar_sprites
 from entidades.flappy import Flappy
+from entidades.score import Score
 from entidades.terreno import Terreno
 from entidades.canos import Canos
 from telas.game_over import GameOver
@@ -24,6 +25,7 @@ class Jogo(TelaBase):
         self.canos1 = Canos(tela_pg)
         self.canos2 = Canos(tela_pg)
         self.canos2.rect.x += (Configs.TELA_LARGURA + self.canos2.imagem.get_width()) / 2
+        self.score = Score(tela_pg)
 
         # self.sprites.append(self.bg)
         # self.sprites.append(self.terreno)
@@ -37,6 +39,11 @@ class Jogo(TelaBase):
         self.canos2.desenhar()
         self.terreno.desenhar()
         self.flappy.desenhar()
+        self.score.desenhar()
+
+        # Passou o cano
+        if self.flappy.rect.x in (self.canos1.rect.x, self.canos2.rect.x):
+            self.score.incrementar_score()
 
         # TODO: animação de morte, tela de game over
         objetos_colisao = [self.canos1, self.canos2, self.terreno]

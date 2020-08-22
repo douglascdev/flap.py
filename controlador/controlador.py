@@ -15,6 +15,7 @@ class Controlador:
         pg.display.init()
         self.tela_pg = pg.display.set_mode(size=(Cfg.TELA_LARGURA, Cfg.TELA_ALTURA))
         pg.display.set_icon(carregar_sprite("outros/favicon"))
+        pg.display.set_caption("flap.py by @douglas-cpp")
         self.clock = pg.time.Clock()
         self.tela: telas.TelaBase = telas.menu.Menu(self.tela_pg, proxima_tela=Jogo)
 
