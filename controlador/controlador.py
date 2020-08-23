@@ -11,11 +11,11 @@ from telas.game_over import GameOver
 class Controlador:
     def __init__(self):
         logging.info("Inicializando controlador")
-        pg.init()
         pg.display.init()
+        pg.mixer.init()
         self.tela_pg = pg.display.set_mode(size=(Cfg.TELA_LARGURA, Cfg.TELA_ALTURA))
         pg.display.set_icon(carregar_sprite("outros/favicon"))
-        pg.display.set_caption("flap.py by @douglas-cpp")
+        pg.display.set_caption("flap.py by douglas-cpp")
         self.clock = pg.time.Clock()
         self.tela: telas.TelaBase = telas.menu.Menu(self.tela_pg, proxima_tela=Jogo)
 

@@ -1,16 +1,21 @@
 import pygame as pg
+from pygame.rect import Rect
+
 from configs import Configs
 from entidades.entidade import Entidade
 
 
 class Score(Entidade):
     def __init__(self, tela_pg):
-        super(Score, self).__init__("numeros", tela_pg)
+        self.tela_pg = tela_pg
         self.score = 0
         self.contador_score = 0
         pg.font.init()
-        self.rect.x, self.rect.y = Configs.TELA_LARGURA / 2, Configs.TELA_ALTURA / 10
+        self.imagem = None
         self.fonte = pg.font.Font("assets/fontes/press-start-2/PressStart2P-vaV7.ttf", 20)
+        self.imagem = self.fonte.render("0", False, (255, 255, 255))
+        self.rect = self.imagem.get_rect()
+        self.rect.x, self.rect.y = Configs.TELA_LARGURA / 2, Configs.TELA_ALTURA / 10
 
     def desenhar(self):
         str_score = str(self.score)

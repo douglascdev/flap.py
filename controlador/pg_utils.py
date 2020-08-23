@@ -58,3 +58,8 @@ def posicao_baixo(altura: int) -> int:
     posicao = Configs.TELA_ALTURA - altura
     logging.info(f"Posição baixo: {posicao}")
     return posicao
+
+
+def som(nome: str):
+    s = pg.mixer.Sound(str(Configs.PASTA_AUDIO / f"{nome}.wav"))
+    s.play()

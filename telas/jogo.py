@@ -2,7 +2,7 @@ import pygame as pg
 import logging
 from random import randint
 from configs.configs import Configs
-from controlador.pg_utils import carregar_sprites
+from controlador.pg_utils import carregar_sprites, som
 from entidades.flappy import Flappy
 from entidades.score import Score
 from entidades.terreno import Terreno
@@ -41,14 +41,16 @@ class Jogo(TelaBase):
         self.flappy.desenhar()
         self.score.desenhar()
 
-        # Passou o cano
+        # Passou um cano, adiciona ao score e toca o efeito sonoro
         if self.flappy.rect.x in (self.canos1.rect.x, self.canos2.rect.x):
+            som("point")
             self.score.incrementar_score()
 
         # TODO: animação de morte, tela de game over
         objetos_colisao = [self.canos1, self.canos2, self.terreno]
         for objeto in objetos_colisao:
             if objeto.colisao(self.flappy):
+                som("hit")
                 logging.info(f"Flappy colidiu com '{objeto.__class__}'")
                 self.canos1.movimentar = False
                 self.canos2.movimentar = False

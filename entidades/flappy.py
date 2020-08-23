@@ -1,6 +1,8 @@
 import logging
 import pygame as pg
 from random import choice
+
+from controlador.pg_utils import som
 from entidades.entidade import Entidade
 from configs.configs import Configs
 
@@ -20,6 +22,7 @@ class Flappy(Entidade):
     def pular(self):
         # if not self.pulando:
         logging.info("Pulando!")
+        som("wing")
         self.pulando = True
         self.aceleracao_vertical = Configs.ACELERACAO_PULO
 
