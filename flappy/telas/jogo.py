@@ -1,14 +1,14 @@
 import pygame as pg
 import logging
 from random import randint
-from configs.configs import Configs
-from controlador.pg_utils import carregar_sprites, som
-from entidades.flappy import Flappy
-from entidades.score import Score
-from entidades.terreno import Terreno
-from entidades.canos import Canos
-from telas.game_over import GameOver
-from telas.tela import TelaBase
+from flappy.configs.configs import Configs
+from flappy.controlador.pg_utils import carregar_sprites, som
+from flappy.entidades.flappy import Flappy
+from flappy.entidades.score import Score
+from flappy.entidades.terreno import Terreno
+from flappy.entidades.canos import Canos
+from flappy.telas.game_over import GameOver
+from flappy.telas.tela import TelaBase
 
 
 class Jogo(TelaBase):

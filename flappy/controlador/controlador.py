@@ -1,11 +1,12 @@
 import sys
 import logging
-from controlador.pg_utils import carregar_sprite
 import pygame as pg
-import telas
-from configs.configs import Configs as Cfg
-from telas import Jogo
-from telas.game_over import GameOver
+from flappy.configs.configs import Configs as Cfg
+from flappy.controlador.pg_utils import carregar_sprite
+from flappy.telas.jogo import Jogo
+from flappy.telas.game_over import GameOver
+from flappy.telas.tela import TelaBase
+from flappy.telas.menu import Menu
 
 
 class Controlador:
@@ -14,10 +15,11 @@ class Controlador:
         pg.display.init()
         pg.mixer.init()
         self.tela_pg = pg.display.set_mode(size=(Cfg.TELA_LARGURA, Cfg.TELA_ALTURA))
+        breakpoint()
         pg.display.set_icon(carregar_sprite("outros/favicon"))
         pg.display.set_caption("flap.py by douglas-cpp")
         self.clock = pg.time.Clock()
-        self.tela: telas.TelaBase = telas.menu.Menu(self.tela_pg, proxima_tela=Jogo)
+        self.tela: TelaBase = Menu(self.tela_pg, proxima_tela=Jogo)
 
     @staticmethod
     def sair() -> None:

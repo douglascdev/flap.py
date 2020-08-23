@@ -1,10 +1,9 @@
 import logging
-import pygame as pg
 from random import choice
 
-from controlador.pg_utils import som
-from entidades.entidade import Entidade
-from configs.configs import Configs
+from flappy.controlador.pg_utils import som
+from flappy.entidades.entidade import Entidade
+from flappy.configs.configs import Configs
 
 
 class Flappy(Entidade):

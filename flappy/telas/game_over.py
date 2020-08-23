@@ -1,13 +1,14 @@
 import pygame as pg
-from controlador.pg_utils import carregar_sprite, posicao_central
+from flappy.controlador.pg_utils import carregar_sprite, posicao_central
+from .menu import Menu
 from .tela import TelaBase
 
 
-class Menu(TelaBase):
-    def __init__(self, tela_pg, proxima_tela=None):
+class GameOver(TelaBase):
+    def __init__(self, tela_pg, proxima_tela = Menu):
         TelaBase.__init__(self, tela_pg, proxima_tela)
         self.bg = carregar_sprite("bg/background-day")
-        self.get_ready_sprite = carregar_sprite("outros/get-ready")
+        self.get_ready_sprite = carregar_sprite("outros/gameover")
         self.get_ready_rect = self.get_ready_sprite.get_rect()
         self.get_ready_central = posicao_central(self.get_ready_rect.w, self.get_ready_rect.h)
 
@@ -22,4 +23,3 @@ class Menu(TelaBase):
         # Deveria ser feito iterando self.sprites, mas as posições x e y centralizadas são descartadas com o get_rect
         self.tela_pg.blit(self.bg, (0, 0))
         self.tela_pg.blit(self.get_ready_sprite, self.get_ready_rect)
-

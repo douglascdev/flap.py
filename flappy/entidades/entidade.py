@@ -1,7 +1,7 @@
 import logging
 import pygame as pg
-from configs import Configs
-from controlador.pg_utils import carregar_sprites
+from flappy.configs import Configs
+from flappy.controlador.pg_utils import carregar_sprites
 
 
 class Entidade(pg.sprite.Sprite):

@@ -1,10 +1,8 @@
-import logging
 import pygame as pg
 from random import choice, randint
 
-from controlador import pg_utils
-from entidades.entidade import Entidade
-from configs.configs import Configs
+from flappy.entidades.entidade import Entidade
+from flappy.configs.configs import Configs
 
 
 class Canos(Entidade):

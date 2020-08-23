@@ -1,6 +1,6 @@
-from configs import Configs
-from controlador import pg_utils
-from entidades.entidade import Entidade
+from flappy.configs import Configs
+from flappy.controlador import pg_utils
+from flappy.entidades.entidade import Entidade
 
 
 class Terreno(Entidade):

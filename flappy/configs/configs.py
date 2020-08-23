@@ -1,11 +1,13 @@
-from pathlib import Path
+from importlib import resources
+from flappy import assets
 
 
 class Configs:
-    PASTA_PROJETO = Path(__file__).parent.parent
-    PASTA_ASSETS = PASTA_PROJETO / "assets"
+    with resources.path(assets, "") as p:
+        PASTA_ASSETS = p
     PASTA_AUDIO = PASTA_ASSETS / "audio"
     PASTA_SPRITES = PASTA_ASSETS / "sprites"
+    PASTA_FONTES = PASTA_ASSETS / "fontes"
     TELA_LARGURA = 288
     TELA_ALTURA = 512
     FPS = 60
@@ -38,7 +40,6 @@ if __name__ == "__main__":
     """
     Verificar a saída das pastas
     """
-    print(Configs.PASTA_PROJETO)
     print(Configs.PASTA_ASSETS)
     print(Configs.PASTA_AUDIO)
     print(Configs.PASTA_SPRITES)

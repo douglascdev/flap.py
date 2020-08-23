@@ -1,8 +1,8 @@
 import pygame as pg
 from pygame.rect import Rect
 
-from configs import Configs
-from entidades.entidade import Entidade
+from flappy.configs import Configs
+from flappy.entidades.entidade import Entidade
 
 
 class Score(Entidade):
@@ -12,7 +12,7 @@ class Score(Entidade):
         self.contador_score = 0
         pg.font.init()
         self.imagem = None
-        arquivo = str(Configs.PASTA_PROJETO / "assets/fontes/press-start-2/PressStart2P-vaV7.ttf")
+        arquivo = str(Configs.PASTA_FONTES / "press-start-2" / "PressStart2P-vaV7.ttf")
         self.fonte = pg.font.Font(arquivo, 20)
         self.imagem = self.fonte.render("0", False, (255, 255, 255))
         self.rect = self.imagem.get_rect()
@@ -37,5 +37,5 @@ class Score(Entidade):
     def proximo_sprite(self):
         pass
 
-    def colisao(self, outro: pg.rect.Rect) -> bool:
+    def colisao(self, outro: Rect) -> bool:
         return False

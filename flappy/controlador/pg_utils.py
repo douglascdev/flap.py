@@ -1,6 +1,6 @@
 import pygame as pg
 import logging
-from configs.configs import Configs
+from flappy.configs.configs import Configs
 from typing import List, Tuple
 
 
