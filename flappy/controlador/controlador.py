@@ -15,7 +15,6 @@ class Controlador:
         pg.display.init()
         pg.mixer.init()
         self.tela_pg = pg.display.set_mode(size=(Cfg.TELA_LARGURA, Cfg.TELA_ALTURA))
-        breakpoint()
         pg.display.set_icon(carregar_sprite("outros/favicon"))
         pg.display.set_caption("flap.py by douglas-cpp")
         self.clock = pg.time.Clock()

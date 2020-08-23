@@ -2,12 +2,12 @@ PYTHON=python3
 PIP=pip3
 
 clean:
-	rm -rf build dist flappy.egg-info
+	rm -rf build dist flappy.egg-info .venv
 
-build_package:
+build_package: clean
 	$(PYTHON) setup.py sdist bdist_wheel
 
-pip_install: clean build
+pip_install: build
 	$(PIP) install .
 
 req_install:
