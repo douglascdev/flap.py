@@ -12,7 +12,8 @@ class Score(Entidade):
         self.contador_score = 0
         pg.font.init()
         self.imagem = None
-        self.fonte = pg.font.Font("assets/fontes/press-start-2/PressStart2P-vaV7.ttf", 20)
+        arquivo = str(Configs.PASTA_PROJETO / "assets/fontes/press-start-2/PressStart2P-vaV7.ttf")
+        self.fonte = pg.font.Font(arquivo, 20)
         self.imagem = self.fonte.render("0", False, (255, 255, 255))
         self.rect = self.imagem.get_rect()
         self.rect.x, self.rect.y = Configs.TELA_LARGURA / 2, Configs.TELA_ALTURA / 10
